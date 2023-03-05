@@ -72,27 +72,27 @@ In this function, a thread waits to be scheduled, the semaphore passing to WAIT,
 it executes what it received and changes its state to FINISH, achieving what it should (i.e. it works)
 Planning is done again after that.
 
--so_exec()
+- so_exec()
 Simulates the execution of a generic instruction. Basically, it just consumes CPU time.
 The quantum is decremented and the semaphore gets in the WAIT state.
 
--so wait()
+- so wait()
 The parameters are checked, the current thread is blocked by switching it to WAIT state. and the replanning is done. Returns 0 if the event exists (its id is valid) or negative on error.
 
--so_signal()
+- so_signal()
 The parameters are also checked for each thread that is in the WAIT state and that has no
 required events, goes into the ready state and is placed in the queue.
 
--new_thread()
+- new_thread()
 A new thread is created with the characteristics given as a parameter and the thread is started with
 pthread_create
 
--press()
+- press()
 A new element is placed in the priority queue
 
--pop()
+- pop()
 The first element in the queue is deleted
 
--execute_current_thread()
+- execute_current_thread()
 Starts the first element in the queue, placing itself in the actual_threads field of the scheduler
 and changing its state to 1, which means READY.
